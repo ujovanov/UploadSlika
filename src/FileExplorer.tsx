@@ -78,7 +78,9 @@ const FileExplorer = () => {
   };
 
   // Format date
+  //@ts-ignore
   const formatDate = (dateString: string): string => {
+    if (!dateString) return '';
     const date = new Date(dateString);
     return date.toLocaleString();
   };
