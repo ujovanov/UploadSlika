@@ -61,8 +61,8 @@ function App() {
       // Add folder name to the form data
       formData.append('folderName', folderName.trim())
       
-      // Use the local server endpoint
-      const response = await fetch('http://localhost:3000/upload', {
+      // Use relative URL for server endpoint
+      const response = await fetch('/upload', {
         method: 'POST',
         body: formData,
       })

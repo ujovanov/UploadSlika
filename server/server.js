@@ -237,6 +237,21 @@ app.get('/download/:folderName/:fileName', (req, res) => {
 // Serve uploaded files statically
 app.use('/uploads', express.static(uploadsDir));
 
+// Serve static files from the React app build directory
+app.use(express.static(path.join(__dirname, '../dist')));
+
+// The "catch-all" handler: for any request that doesn't match the ones above,
+// send back the React app's index.html file.
+app.get('*', (req, res, next) => {
+  // Skip API routes
+  if (req.path.startsWith('/folders') || 
+      req.path.startsWith('/upload') || 
+      req.path.startsWith('/download')) {
+    return next();
+  }
+  res.sendFile(path.join(__dirname, '../dist/index.html'));
+});
+
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);

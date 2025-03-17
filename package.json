@@ -10,7 +10,9 @@
     "preview": "vite preview",
     "server:dev": "nodemon server/server.js",
     "server:build": "tsc -p server/tsconfig.json",
-    "server:start": "node dist/server.js"
+    "server:start": "node dist/server.js",
+    "build:all": "npm run build && npm run server:build",
+    "start": "node dist/server.js"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.14",

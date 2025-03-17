@@ -31,7 +31,7 @@ const FileExplorer = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch('http://localhost:3000/folders');
+      const response = await fetch('/folders');
       const data = await response.json();
       
       if (data.success) {
@@ -52,7 +52,7 @@ const FileExplorer = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`http://localhost:3000/folders/${folderName}`);
+      const response = await fetch(`/folders/${folderName}`);
       const data = await response.json();
       
       if (data.success) {
@@ -175,7 +175,7 @@ const FileExplorer = () => {
                         {file.isImage ? (
                           <div className="h-32 bg-gray-800 relative">
                             <img 
-                              src={`http://localhost:3000${file.url}`} 
+                              src={file.url} 
                               alt={file.name}
                               className="w-full h-full object-contain"
                             />
@@ -194,7 +194,7 @@ const FileExplorer = () => {
                           
                           <div className="mt-2 flex justify-between">
                             <a 
-                              href={`http://localhost:3000${file.url}`} 
+                              href={file.url} 
                               target="_blank" 
                               rel="noopener noreferrer"
                               className="text-xs text-purple-400 hover:text-purple-300 transition-colors"
@@ -202,7 +202,7 @@ const FileExplorer = () => {
                               View
                             </a>
                             <a 
-                              href={`http://localhost:3000${file.downloadUrl}`} 
+                              href={file.downloadUrl} 
                               download
                               className="text-xs text-green-400 hover:text-green-300 transition-colors"
                             >
